@@ -21,8 +21,13 @@ rm -rf dist
 mkdir -p dist/SoulMateAI
 cp target/SoulMateAI.exe dist/SoulMateAI/
 mv jre dist/SoulMateAI/jre
+
 cd dist
-zip -r SoulMateAI-发布包.zip SoulMateAI/
+if command -v zip &>/dev/null; then
+    zip -r SoulMateAI-发布包.zip SoulMateAI/
+else
+    powershell -Command "Compress-Archive -Path 'SoulMateAI/*' -DestinationPath 'SoulMateAI-发布包.zip' -Force"
+fi
 cd ..
 
 echo ""
