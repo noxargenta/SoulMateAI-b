@@ -5,3 +5,8 @@ target/
 config.properties
 memory.json
 app.log
+maven/
+maven.zip
+launch4j-native/
+launch4j-native.zip
+dependency-reduced-pom.xml
