@@ -73,6 +73,7 @@
                             <headerType>gui</headerType>
                             <outfile>${project.build.directory}/SoulMateAI.exe</outfile>
                             <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+                            <icon>${project.basedir}/src/main/resources/soulmate.ico</icon>
                             <errTitle>SoulMate AI</errTitle>
                             <launch4jDir>${project.basedir}/launch4j-native/launch4j</launch4jDir>
                             <classPath>
