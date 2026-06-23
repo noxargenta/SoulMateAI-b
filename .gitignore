@@ -10,3 +10,5 @@ maven.zip
 launch4j-native/
 launch4j-native.zip
 dependency-reduced-pom.xml
+jre/           # jlink 生成的便携式 JRE（构建产物）
+dist/          # 发布包输出目录
