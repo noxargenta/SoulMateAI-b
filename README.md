@@ -28,23 +28,40 @@
 
 #### 前置条件
 - JDK 11+（推荐 GraalVM 21+）
+- Maven 3.9+
 - Git
 
-#### 克隆 & 打包
+#### 克隆 & 编译
 
 ```bash
 git clone https://github.com/noxargenta/SoulMateAI-b.git
 cd SoulMateAI-b
 
-# Windows 用户 — 双击 package-dist.bat
-# 或命令行运行：
-package-dist.bat
-
-# Mac/Linux 用户：
-bash package-dist.sh
+# 编译并打包 exe
+mvn package -DskipTests
 ```
 
-构建完成后 `dist/SoulMateAI-发布包.zip` 即为可分发安装包。
+#### 制作便携版（可选，收件人无需安装 Java）
+
+```bash
+# 1. 用 jlink 裁剪 JRE
+jlink \
+    --module-path "%JAVA_HOME%/jmods" \
+    --add-modules java.base,java.desktop,java.net.http,java.logging,java.xml,jdk.crypto.ec,jdk.unsupported,java.naming,java.management \
+    --output jre \
+    --strip-debug --compress zip-6 --no-header-files --no-man-pages
+
+# 2. 将 exe 和 JRE 放在同一目录
+mkdir -p dist/SoulMateAI
+cp target/SoulMateAI.exe dist/SoulMateAI/
+mv jre dist/SoulMateAI/jre
+
+# 3. 压缩为发布包
+cd dist
+zip -r SoulMateAI-发布包.zip SoulMateAI/
+```
+
+`dist/SoulMateAI-发布包.zip` 即为无需安装 Java 的可分发安装包。
 
 ## 项目架构
 
